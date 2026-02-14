@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control.sh | The Efficient Orchestrator</title>
+    <meta name="description"
+        content="A minimalist and powerful wrapper for Docker Compose v2 designed for high-efficiency microservices orchestration.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+
+<body>
+    <div class="glow-bg"></div>
+
+    <nav>
+        <div class="container">
+            <div class="logo">
+                <img src="favicon.png" alt="Control Logo" class="logo-icon">
+                CONTROL<span>.SH</span>
+            </div>
+            <div class="links">
+                <a href="#features">Features</a>
+                <a href="#usage">Usage</a>
+                <a href="https://github.com/rebienkrdns/control.sh/tree/main/examples">Examples</a>
+                <a href="https://github.com/rebienkrdns/control.sh" class="github-link">GitHub</a>
+            </div>
+        </div>
+    </nav>
+
+    <header>
+        <div class="container hero">
+            <h1 class="animate-up">Orchestrate with <span>Confidence</span></h1>
+            <p class="subtitle animate-up" style="animation-delay: 0.1s;">A powerful script to manage Docker Compose
+                environments with speed, consistency, and zero waste.</p>
+            <div class="cta-group animate-up" style="animation-delay: 0.2s;">
+                <pre
+                    class="copy-command"><code>curl -sSL https://raw.githubusercontent.com/rebienkrdns/control.sh/main/control.sh -o control.sh</code></pre>
+                <div class="badges">
+                    <span class="badge">MIT License</span>
+                    <span class="badge">Docker v2</span>
+                    <span class="badge">Bash 4.0+</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="features" class="features-grid">
+            <div class="feature-card">
+                <div class="icon">🚀</div>
+                <h3>Profile Abstraction</h3>
+                <p>Manage multiple Docker profiles seamlessly without typing repetitive flags.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">🛡️</div>
+                <h3>Permission Sync</h3>
+                <p>Automatically syncs UID/GID between host and containers to avoid permission issues.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">🧹</div>
+                <h3>Deep Clean</h3>
+                <p>One command to wipe containers, volumes, and local build artifacts (dist/node_modules).</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">👁️</div>
+                <h3>Dry Run</h3>
+                <p>Preview exactly what commands will be executed before any modification.</p>
+            </div>
+        </section>
+
+        <section id="usage" class="usage-section">
+            <h2>Streamlined <span>Workflow</span></h2>
+            <div class="command-explorer">
+                <div class="command-list">
+                    <div class="command-item active" onclick="showCommand('up')">
+                        <h4>up</h4>
+                        <p>Start services</p>
+                    </div>
+                    <div class="command-item" onclick="showCommand('build')">
+                        <h4>build</h4>
+                        <p>No-cache build</p>
+                    </div>
+                    <div class="command-item" onclick="showCommand('reset')">
+                        <h4>reset</h4>
+                        <p>Hard reset</p>
+                    </div>
+                    <div class="command-item" onclick="showCommand('clean')">
+                        <h4>clean</h4>
+                        <p>Full cleanup</p>
+                    </div>
+                </div>
+                <div class="command-viewer">
+                    <pre id="command-output"><code>./control.sh up -p develop -p tools</code></pre>
+                    <p id="command-desc">Starts the environment using multiple profiles instantly.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="philosophy" class="philosophy-section">
+            <div class="glass-card">
+                <h2>Engineering <span>Philosophy</span></h2>
+                <p>Control.sh follows <b>Core Engineering Standards</b>: Zero waste, system-native performance, and
+                    developer-first aesthetics. It's not just a script; it's an engineering standard for containerized
+                    development.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Control.sh Contributors. Built for the modern developer.</p>
+        </div>
+    </footer>
+
+    <script>
+        const commands = {
+            up: {
+                cmd: './control.sh up -p develop -p tools',
+                desc: 'Starts the environment using multiple profiles instantly.'
+            },
+            build: {
+                cmd: './control.sh build --service api',
+                desc: 'Forces a fresh rebuild of a specific service bypassing the cache.'
+            },
+            reset: {
+                cmd: './control.sh reset',
+                desc: 'The "Emergency Button": drops volumes, stops containers, and restarts fresh.'
+            },
+            clean: {
+                cmd: './control.sh clean --dir dist --dir node_modules',
+                desc: 'Removes the stack and wipes local artifact directories safely.'
+            }
+        };
+
+        function showCommand(id) {
+            document.querySelectorAll('.command-item').forEach(el => el.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+            document.getElementById('command-output').innerText = commands[id].cmd;
+            document.getElementById('command-desc').innerText = commands[id].desc;
+        }
+    </script>
+</body>
+
+</html>

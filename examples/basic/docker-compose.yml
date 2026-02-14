@@ -1,0 +1,14 @@
+services:
+  web:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+    profiles:
+      - develop
+  
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_PASSWORD: example_password
+    profiles:
+      - develop
