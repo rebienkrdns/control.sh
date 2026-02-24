@@ -28,10 +28,9 @@ In modern microservices architectures, the complexity of managing multiple execu
 
 ## 🛠️ Quick Installation
 
-1.  Copy the `control.sh` script to your project root.
-2.  Grant execution permissions:
+1.  Execute installer:
     ```bash
-    chmod +x control.sh
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/rebienkrdns/control.sh/main/install.sh)"
     ```
 3.  (Optional) Create a `.env` file to customize behavior.
 
